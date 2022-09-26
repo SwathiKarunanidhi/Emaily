@@ -24,7 +24,8 @@ passport.use(new GoogleStrategy (
     clientID : keys.googleClientID,
     clientSecret : keys.googleClientSecret,
    // Callback URL to which user has to be sent after consent screen
-    callbackURL : '/auth/google/callback'
+    callbackURL : '/auth/google/callback',
+    proxy : true
    },
     ( accessToken,refreshToken, profile,done) =>
     {
