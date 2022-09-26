@@ -3,10 +3,10 @@
 if(process.env.NODE_ENV==='production')
 {
  //we are in Production
- modules.export = require('./prod');
+ module.export = require('./prod');
 }
 else
 {
  //we are in development
-modules.exports = require('./dev');
+module.exports = require('./dev');
 }
