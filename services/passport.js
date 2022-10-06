@@ -27,10 +27,10 @@ passport.use(new GoogleStrategy (
     callbackURL : '/auth/google/callback',
     proxy : true
    },
-    ( accessToken,refreshToken, profile,done) =>
+    async (accessToken,refreshToken, profile,done) =>
     {
-      //Accessing MonggoDB to search and fetch, asynchronous call, chain with promise
-      User.findOne({googleId : profile.id}).then(existingUser => {
+      //Accessing MonggoDB to search and fetch, asynchronous call, chain with promise - Later refactored...
+      const existingUser = await User.findOne({googleId : profile.id});
         if(existingUser)
         {
           done(null, existingUser);
@@ -38,11 +38,12 @@ passport.use(new GoogleStrategy (
         else
         {
           //create new record for the new user
-          //Accessing MonggoDB to search and fetch, asynchronous call, chain with promise
-          new User({ googleId : profile.id }).save().then(user => done(null, user));
+          //Accessing MonggoDB to search and fetch, asynchronous call, chain with promise - Later refactored...
+          const user = await new User({ googleId : profile.id }).save();
+          done(null, user);
         }
-      })  
+        
      
     }
-      )
-        );
+) 
+);

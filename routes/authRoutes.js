@@ -6,9 +6,15 @@ app.get('/auth/google', passport.authenticate('google',
 ));
 
 //followback route handler
-app.get('/auth/google/callback',passport.authenticate('google'));
+app.get( '/auth/google/callback',
+          passport.authenticate('google'),
+          (req,res) =>
+              {
+                 res.redirect('/surveys');
+              }
+);
 
-//to test
+//to get current user details
 app.get('/api/currentUser', (req, res) =>
 {
     res.send(req.user); // passport attaches user automatically to req
@@ -17,8 +23,9 @@ app.get('/api/currentUser', (req, res) =>
 app.get('/api/logout',(req, res) => 
 {
    req.logout(); // passport attaches logout() automatically to req
-   res.send(req.user);
+   res.redirect('/');
 })
+
 };
 
 
