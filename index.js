@@ -14,6 +14,7 @@ const bodyParser = require('body-parser');
 //returns the function / executes
 require('./models/User');
 require('./services/passport');
+require('./models/Survey');
 
 //Connecting mongoose to DB -- argument <Addres>
 mongoose.connect(Keys.mongoURI)
@@ -38,6 +39,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 //handle the routes in the production form client side
 if(process.env.NODE_ENV === 'production')
