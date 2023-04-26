@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
-//creting schema
+//creating schema
 const userSchema = new Schema ({
     googleId: String,
     credits : {

@@ -1,4 +1,4 @@
-//Importing Express -- to communicate with fronten and backend
+//Importing Express -- to communicate with frontend and backend
 const express = require('express');
 //Importing mongoose -- to communicate with MongoDB
 const mongoose = require('mongoose');

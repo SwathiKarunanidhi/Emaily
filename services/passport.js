@@ -29,7 +29,7 @@ passport.use(new GoogleStrategy (
    },
     async (accessToken,refreshToken, profile,done) =>
     {
-      //Accessing MonggoDB to search and fetch, asynchronous call, chain with promise - Later refactored...
+      //Accessing MongoDB to search and fetch, asynchronous call, chain with promise - Later refactored...
       const existingUser = await User.findOne({googleId : profile.id});
         if(existingUser)
         {

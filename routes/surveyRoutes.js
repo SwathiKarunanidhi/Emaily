@@ -14,7 +14,7 @@ module.exports = app =>
         res.send('Thanks for your feedback!!');
     });
     app.get('/api/surveys', requireLogin, async (req,res) => {
-        const survey = await Survey.find({_user : req.user.id}).select({recipiemts:false}); 
+        const survey = await Survey.find({_user : req.user.id}).select({recipienSts:false}); 
         res.send(survey);
     })
     app.post('/api/surveys', requireLogin ,requireCredits, async (req,res) => {
